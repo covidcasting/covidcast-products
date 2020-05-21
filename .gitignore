@@ -1,3 +1,7 @@
+# The large results.rds file for every run
+2020/*/results.rds
+
+
 # History files
 .Rhistory
 .Rapp.history
