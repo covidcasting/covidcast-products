@@ -1,0 +1,237 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+Invoking mpirun
+[32m✔[39m Initialized MPI cluster
+[36mℹ[39m Cluster size is: [34m[34m17[34m[39m
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[32m✔[39m Read [34m[34mcovidtracking-smoothed.csv[34m[39m, all assertions passed
+[33m![39m Filtering out the following states:
+● Puerto Rico
+[32m✔[39m Configuration finished successfully. Summary:
+● Washington
+  ◯ Death data: 124 obs
+  ◯ Cases data: 124 obs
+  ◯ Fracpos data: 124 obs
+● Rhode Island
+  ◯ Death data: 85 obs
+  ◯ Cases data: 85 obs
+  ◯ Fracpos data: 85 obs
+● Michigan
+  ◯ Death data: 85 obs
+  ◯ Cases data: 85 obs
+  ◯ Fracpos data: 85 obs
+● Wisconsin
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Texas
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● South Carolina
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Oregon
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● New York
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● New Hampshire
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● North Carolina
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Illinois
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Georgia
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Florida
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● California
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Arizona
+  ◯ Death data: 82 obs
+  ◯ Cases data: 82 obs
+  ◯ Fracpos data: 82 obs
+● Virginia
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● Tennessee
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● Ohio
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● Nevada
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● New Jersey
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● Nebraska
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● Maryland
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● District of Columbia
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● Colorado
+  ◯ Death data: 81 obs
+  ◯ Cases data: 81 obs
+  ◯ Fracpos data: 81 obs
+● West Virginia
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Vermont
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Pennsylvania
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● New Mexico
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Minnesota
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Kentucky
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Kansas
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Indiana
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Iowa
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Delaware
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Arkansas
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Alaska
+  ◯ Death data: 80 obs
+  ◯ Cases data: 80 obs
+  ◯ Fracpos data: 80 obs
+● Wyoming
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Utah
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● South Dakota
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Oklahoma
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● North Dakota
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Montana
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Mississippi
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Missouri
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Maine
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Louisiana
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Idaho
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Hawaii
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Connecticut
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Alabama
+  ◯ Death data: 79 obs
+  ◯ Cases data: 79 obs
+  ◯ Fracpos data: 79 obs
+● Massachusetts
+  ◯ Death data: 74 obs
+  ◯ Cases data: 74 obs
+  ◯ Fracpos data: 74 obs
+● Virgin Islands
+  ◯ Death data: 70 obs
+  ◯ Cases data: 70 obs
+  ◯ Fracpos data: 70 obs
+● Northern Mariana Islands
+  ◯ Death data: 70 obs
+  ◯ Cases data: 70 obs
+  ◯ Fracpos data: 70 obs
+● Guam
+  ◯ Death data: 70 obs
+  ◯ Cases data: 70 obs
+  ◯ Fracpos data: 70 obs
+● American Samoa
+  ◯ Death data: 70 obs
+  ◯ Cases data: 70 obs
+  ◯ Fracpos data: 70 obs
+[36mℹ[39m Beginning model executions
+[32m✔[39m Finished model executions
+[32m✔[39m Saved result to longrun.rds
