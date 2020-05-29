@@ -1,5 +1,10 @@
+movingavg_run := 2020-05-28-ctp-allstates-movingaverage
 matrix_run := 2020-05-26-matrix
 current_run := 2020-05-24-ctp-allstates-smoothed
+
+$(movingavg_run)/warnings.html: $(movingavg_run)/results.rds src/warnings.R
+	Rscript src/warnings.R --output $@ "$<"
+	mv output.html $@
 
 $(matrix_run)/warnings.html: $(matrix_run)/results.rds src/warnings.R
 	Rscript src/warnings.R --output $@ "$<"
