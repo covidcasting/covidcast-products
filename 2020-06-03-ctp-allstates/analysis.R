@@ -92,7 +92,7 @@ renderPlots2 <- function(sp) {
         plots[[4]],
         nrow = 4,
         ncol = 1,
-        top = glue("{state_name}")
+        top = glue::glue("{state_name}")
       )
 
       cli_alert_success("Finished")
