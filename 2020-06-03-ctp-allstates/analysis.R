@@ -28,9 +28,7 @@ simpler <- select(final, state, result = result.result)
 cli_alert_info("Producing ggproto visuals and Rt estimations")
 mutate(
   simpler,
-  plots        = map(result, viz),
-  RtNaiveEstim = map(result, RtNaiveEstim),
-  RtEstim      = map(result, RtEst)
+  plots = map(result, ~viz(., include.RtEstim = TRUE))
 ) %>% arrange(state) -> sp
 cli_alert_success("Finished")
 
@@ -51,12 +49,11 @@ custom_legend <- theme(
 renderPlots2 <- function(sp) {
   pwalk(
     sp,
-    function(state_name,
-             result, plots, RtNaiveEstim, RtEstim) {
+    function(state_name, result, plots) {
 
       cli_alert_info("Producing plots for region {.code {state_name}}")
 
-      x_start <- as.Date('2020/01/20')
+      x_start <- as.Date('2020/01/01')
       x_end   <- as.Date('2020/06/03')
 
       x_scale <- scale_x_date(
@@ -76,9 +73,6 @@ renderPlots2 <- function(sp) {
         "Naive R_0(t)",
         "R_t Estimate") -> plot_titles
       
-      plots <- plots[c(1,2)] # Exclude delay plot
-
-      plots <- append(plots, list(RtNaiveEstim, RtEstim)) # Add RtEstim plot
       plots <- map(plots, ~. + custom_legend) # Inset legend
       plots <- map(plots, ~. + x_scale) # Nice date axis
       plots <- map(plots, ~. + labs(title = NULL, y = NULL)) # Remove title/ylab
@@ -108,7 +102,7 @@ renderPlots2 <- function(sp) {
 # dev.off()
 
 cli_alert_info("Rendering PDF")
-pdf('plots.pdf', width=11, height=8.5)
+pdf('plots.pdf', width=13, height=8.5)
 renderPlots2(sp)
 dev.off()
 cli_alert_success("Success")
