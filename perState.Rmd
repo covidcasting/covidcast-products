@@ -33,42 +33,54 @@ results <- left_join(results_raw, input_d, by = c('state', 'date'), suffix = c("
   group_by(state) %>%
   summarize_at(vars(-date), ~list(xts(., order.by = date)))
 
-purrr::pmap(results, function(state, ...) {
+makeCharts <- function(results)
+  purrr::pmap(results, function(state, ...) {
 
-  data <- list(...)
+    data <- list(...)
 
-  plot <- highchart(type = 'stock') %>% 
-    hc_yAxis_multiples(
-      create_yaxis(4, height = c(3, 1, 3, 3), opposite = TRUE,
-        type = c("logarithmic", "linear", "linear", "linear"),
-        plotBands = list(
-          list(), list(), list(),
-          list(from = 0, to = 1, color = hex_to_rgba("green", 0.1),
-               label = list(text = "Rt < 1"))
+    plot <- highchart(type = 'stock') %>% 
+      hc_yAxis_multiples(
+        create_yaxis(4, height = c(3, 1, 3, 3), opposite = TRUE,
+          type = c("logarithmic", "linear", "linear", "linear"),
+          plotBands = list(
+            list(), list(), list(),
+            list(from = 0, to = 1, color = hex_to_rgba("green", 0.1),
+                 label = list(text = "Rt < 1"))
+          )
         )
-      )
-    ) %>% 
-    hc_add_series(data$cases.fitted, yAxis = 0, name = "Cases (Fitted)") %>% 
-    hc_add_series(data$deaths.fitted, yAxis = 0, name = "Deaths (Fitted)") %>% 
-    hc_add_series(data$cases, yAxis = 0, name = "Cases") %>% 
-    hc_add_series(data$deaths.input, yAxis = 0, name = "Deaths") %>% 
-    hc_add_series(data$fracpos, color = "gray", yAxis = 1,
-                  name = "Fraction positive", type = "column") %>% 
-    hc_add_series(data$infections, yAxis = 2, name = "Infections",
-                  color = hex_to_rgba("green", 0.7)) %>%
-    hc_add_series(data$Rt, color = hex_to_rgba("red", 0.7),
-                  yAxis = 3, name = "Rt estimate") %>%
-    hc_xAxis(title = list(text = "First day of data"),
-             plotLines = list(
-               list(label = list(text = "This is a plotLine"),
-                    color = "#FF0000",
-                    width = 2,
-                    value = 5.5))) %>%
-    hc_tooltip(pointFormat = '{series.name}: <b>{point.y:.2f}</b>') %>%
-    hc_size(height = 700)
+      ) %>% 
+      hc_add_series(data$cases.fitted, yAxis = 0, name = "Cases (Fitted)") %>% 
+      hc_add_series(data$deaths.fitted, yAxis = 0, name = "Deaths (Fitted)") %>% 
+      hc_add_series(data$cases, yAxis = 0, name = "Cases") %>% 
+      hc_add_series(data$deaths.input, yAxis = 0, name = "Deaths") %>% 
+      hc_add_series(data$fracpos, color = "gray", yAxis = 1,
+                    name = "Fraction positive", type = "column") %>% 
+      hc_add_series(data$infections, yAxis = 2, name = "Infections",
+                    color = hex_to_rgba("green", 0.7)) %>%
+      hc_add_series(
+        # data = purrr::transpose(
+        #   list(data$infections.lo, data$infections.hi)
+        # ) %>% xts(),
+        data = as.xts(
+          data.frame(lo = data$infections.lo, hi = data$infections.hi)
+        ),
+        type = 'errorbar', yAxis = 2
+      ) %>%
+      hc_add_series(data$Rt, color = hex_to_rgba("red", 0.7),
+                    yAxis = 3, name = "Rt estimate") %>%
+      hc_xAxis(title = list(text = "First day of data"),
+               plotLines = list(
+                 list(label = list(text = "This is a plotLine"),
+                      color = "#FF0000",
+                      width = 2,
+                      value = lubridate::now()))) %>%
+      hc_tooltip(pointFormat = '{series.name}: <b>{point.y:.2f}</b>') %>%
+      hc_size(height = 700)
 
-    list(htmltools::h2(state), plot)
-}) -> state.charts
+      list(htmltools::h2(state), plot)
+  })
+
+state.charts <- makeCharts(results)
 
 htmltools::tagList(state.charts)
 ```
