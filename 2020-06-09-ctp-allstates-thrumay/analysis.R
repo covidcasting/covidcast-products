@@ -29,8 +29,6 @@ cli_alert_info("Producing ggproto visuals and Rt estimations")
 mutate(
   simpler,
   plots        = map(result, viz),
-  RtNaiveEstim = map(result, RtNaiveEstim),
-  RtEstim      = map(result, RtEst)
 ) %>% arrange(state) -> sp
 cli_alert_success("Finished")
 
@@ -51,8 +49,7 @@ custom_legend <- theme(
 renderPlots2 <- function(sp) {
   pwalk(
     sp,
-    function(state_name,
-             result, plots, RtNaiveEstim, RtEstim) {
+    function(state_name, result, plots) {
 
       cli_alert_info("Producing plots for region {.code {state_name}}")
 
@@ -76,9 +73,6 @@ renderPlots2 <- function(sp) {
         "R_t Estimate",
         "Naive R_0(t)") -> plot_titles
       
-      plots <- plots[c(1,2)] # Exclude delay plot
-
-      plots <- append(plots, list(RtNaiveEstim, RtEstim)) # Add RtEstim plot
       plots <- map(plots, ~. + custom_legend) # Inset legend
       plots <- map(plots, ~. + x_scale) # Nice date axis
       plots <- map(plots, ~. + labs(title = NULL, y = NULL)) # Remove title/ylab
