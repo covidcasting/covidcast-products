@@ -26,19 +26,10 @@ bind_cols(
 simpler <- select(final, state, result = result.result)
 
 cli_alert_info("Producing ggproto visuals and Rt estimations")
-mutate(
-  simpler,
-  plots        = map(result, viz),
-  RtNaiveEstim = map(result, RtNaiveEstim),
-  RtEstim      = map(result, RtEst)
-) %>% arrange(state) -> sp
+mutate(simpler, plots = map(result, viz)) %>% arrange(state) -> sp
 cli_alert_success("Finished")
 
-titleRight <- function(gg, title)
-  gridExtra::arrangeGrob(
-    gg,
-    right = title
-  )
+titleRight <- function(gg, title) gridExtra::arrangeGrob(gg, right = title)
 
 custom_legend <- theme(
   legend.position = c(0, 1),
@@ -51,8 +42,7 @@ custom_legend <- theme(
 renderPlots2 <- function(sp) {
   pwalk(
     sp,
-    function(state_name,
-             result, plots, RtNaiveEstim, RtEstim) {
+    function(state_name, result, plots) {
 
       cli_alert_info("Producing plots for region {.code {state_name}}")
 
@@ -74,11 +64,8 @@ renderPlots2 <- function(sp) {
         "",
         "Modeled New Infections",
         "R_t Estimate",
-        "Naive R_0(t)") -> plot_titles
+        "Naive R_t Estimate") -> plot_titles
       
-      plots <- plots[c(1,2)] # Exclude delay plot
-
-      plots <- append(plots, list(RtNaiveEstim, RtEstim)) # Add RtEstim plot
       plots <- map(plots, ~. + custom_legend) # Inset legend
       plots <- map(plots, ~. + x_scale) # Nice date axis
       plots <- map(plots, ~. + labs(title = NULL, y = NULL)) # Remove title/ylab

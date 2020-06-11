@@ -39,3 +39,5 @@ base
 anim <- base %+% d + transition_time(max_date) + shadow_trail(color = 'grey30')
 
 animate(anim, fps = 30, duration = 30, width = 18, height = 9, units = 'in', res = 150)  
+
+anim_save('animation3.gif')
