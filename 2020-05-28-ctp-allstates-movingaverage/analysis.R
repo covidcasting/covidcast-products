@@ -1,5 +1,5 @@
 suppressPackageStartupMessages( library(tidyverse) )
-library(covidcast)
+library(covidestim)
 library(gridExtra)
 library(cowplot)
 library(cli)
