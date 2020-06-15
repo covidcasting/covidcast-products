@@ -1,5 +1,5 @@
 library(furrr)
-library(covidcast)
+library(covidestim)
 plan(multicore) # enable multicore execution
 
 d <- readRDS('results.rds')
