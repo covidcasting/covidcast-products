@@ -4,6 +4,8 @@ library(gridExtra)
 library(cowplot)
 library(cli)
 
+covidcast_register()
+
 path_result <- "results.rds"
 path_config <- "config.rds"
 
