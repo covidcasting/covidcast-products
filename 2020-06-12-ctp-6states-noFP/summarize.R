@@ -2,6 +2,8 @@ library(furrr)
 library(covidestim)
 plan(multicore) # enable multicore execution
 
+covidcast_register() # For backwards-compatibility with S3 methods
+
 d <- readRDS('results.rds')
 
 # Map each for of `d`, row-bind the result, do it in parallel
