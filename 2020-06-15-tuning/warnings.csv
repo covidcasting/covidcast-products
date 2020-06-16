@@ -1,0 +1,121 @@
+state,setup,warnings
+Kansas,alpha,"There were 6 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Kansas,alpha,"There were 300 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Kansas,alpha,"Examine the pairs() plot to diagnose sampling problems
+"
+Kansas,alpha,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Kansas,alpha,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Kansas,alpha,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Maryland,alpha,"There were 60 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Maryland,alpha,"There were 300 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Maryland,alpha,"Examine the pairs() plot to diagnose sampling problems
+"
+Maryland,alpha,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Maryland,alpha,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Maryland,alpha,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Michigan,alpha,"There were 7 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Michigan,alpha,"There were 600 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Michigan,alpha,"Examine the pairs() plot to diagnose sampling problems
+"
+Michigan,alpha,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Michigan,alpha,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Michigan,alpha,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Nebraska,alpha,"There were 3 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Nebraska,alpha,"There were 600 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Nebraska,alpha,"Examine the pairs() plot to diagnose sampling problems
+"
+Nebraska,alpha,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Nebraska,alpha,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Nebraska,alpha,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Kansas,beta,"There were 6 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Kansas,beta,"There were 300 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Kansas,beta,"Examine the pairs() plot to diagnose sampling problems
+"
+Kansas,beta,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Kansas,beta,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Kansas,beta,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Maryland,beta,"There were 60 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Maryland,beta,"There were 300 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Maryland,beta,"Examine the pairs() plot to diagnose sampling problems
+"
+Maryland,beta,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Maryland,beta,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Maryland,beta,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Michigan,beta,"There were 7 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Michigan,beta,"There were 600 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Michigan,beta,"Examine the pairs() plot to diagnose sampling problems
+"
+Michigan,beta,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Michigan,beta,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Michigan,beta,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
+Nebraska,beta,"There were 3 divergent transitions after warmup. Increasing adapt_delta above 0.92 may help. See
+http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup"
+Nebraska,beta,"There were 600 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 12. See
+http://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded"
+Nebraska,beta,"Examine the pairs() plot to diagnose sampling problems
+"
+Nebraska,beta,"The largest R-hat is NA, indicating chains have not mixed.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#r-hat"
+Nebraska,beta,"Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#bulk-ess"
+Nebraska,beta,"Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+Running the chains for more iterations may help. See
+http://mc-stan.org/misc/warnings.html#tail-ess"
