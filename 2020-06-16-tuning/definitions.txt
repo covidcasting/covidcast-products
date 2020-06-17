@@ -1,0 +1,7 @@
+alpha:
+  max_treedepth=13
+  adapt_delta=0.93
+
+beta:
+  max_treedepth=13
+  adapt_delta=0.98
