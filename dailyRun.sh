@@ -57,13 +57,17 @@ Rscript rslurm.R \
 cd _rslurm* || { echo "Couldn't enter the _rslurm directory" >&2; exit 1; }
 
 mkdir logs # Where Stan logs will be stored
-jid1=$(../sbatch submit.sh)
+jid1=$(../sbatch submit.sh) # Submit the script
 
 echo "Job array submitted; jobid=$jid1"
-cd ..
+cd .. # Now in the base directory for the run, ex. 2020-06-30/
 
-jid2=$(./sbatch --afterany:$jid1 --mem=40g Rscript summarize.R --id-vars=state sjob.RDS)
+# Submit the summarizing script
+jid2=$(./sbatch --afterany:$jid1 --mem-per-cpu=40g --time=30 summarize.sh --id-vars=state sjob.RDS)
 
-echo "Completion script submitted; jobid=$jid2"
+echo "Summarization script submitted; jobid=$jid2"
 
-cd ..
+# Submit the finalizing script
+jid3=$(./sbatch --afterok:$jid2 --mem-per-cpu=2g --time=10 finalize.sh)
+
+echo "Finalization script submitted; jobid=$jid3"
