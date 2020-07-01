@@ -69,5 +69,5 @@ list(
 
 cat(
   toJSON(final, pretty = TRUE, auto_unbox = TRUE, na = 'null'),
-  file = "data.json"
+  file = "summary.json"
 )
