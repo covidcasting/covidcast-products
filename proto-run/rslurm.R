@@ -136,7 +136,7 @@ slurm_apply(
   sh_template   = "batch_template.txt",
   slurm_options = list(
     `cpus-per-task` = cpus_per_task,
-    `mem-per-cpu`   = "0.5G",
+    `mem-per-cpu`   = "500m",
     time            = runtime,
     partition       = partition
   ),
