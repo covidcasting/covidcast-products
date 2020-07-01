@@ -3,6 +3,15 @@ library(usmap)
 library(jsonlite)
 
 d <- read_csv('summary.csv')
+d_input <- read_csv('data.csv') %>%
+  transmute(date, state,
+            input_cases = cases,
+            input_deaths = deaths,
+            input_volume = round(input_cases / fracpos))
+
+d <- left_join(d, d_input, by = c('date', 'state'))
+d <- filter(d, data.available == TRUE)
+d <- filter(d, date < max(date) - lubridate::days(2))
 
 # Split each state into its own group, then split each group into its own df
 d_split <- d %>% group_by(state) %>% group_split()
@@ -18,12 +27,15 @@ d_indexed <- d_split %>% setNames(d_statenames)
 process_state <- function(df) {
 
   c("date"           = "date",
-    "corr_cases_new" = "cases.fitted",
-    "corr_cases_raw" = "cases.fitted",
-    "onsets"         = "infections",
     "r0"             = "Rt",
     "r0_l80"         = "Rt.lo",
-    "r0_h80"         = "Rt.hi"
+    "r0_h80"         = "Rt.hi",
+    "cases_new"      = "input_cases",
+    "corr_cases_new" = "cases.fitted",
+    "tests-new"      = "input_volume",
+    "deaths_new"     = "input_deaths",
+    "onsets"         = "infections",
+    "corr_cases_raw" = "input_cases"
   ) -> vars_to_keep
 
   df <- select_at(df, vars_to_keep)
@@ -55,4 +67,7 @@ list(
   last_r0_date = d$date[length(d$date) - 2] %>% format('%Y-%m-%d')
 ) -> final
 
-print(toJSON(final, pretty = TRUE, auto_unbox = TRUE))
+cat(
+  toJSON(final, pretty = TRUE, auto_unbox = TRUE, na = 'null'),
+  file = "data.json"
+)
