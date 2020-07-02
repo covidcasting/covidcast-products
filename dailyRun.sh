@@ -8,6 +8,10 @@ source activate covidcast
 set -o nounset # No undefined variables
 set -o errexit # Error ASAP
 
+# Get current with master
+git checkout master
+git pull origin master
+
 COVIDESTIM_SOURCES='git@github.com:covidestim/covidestim-sources'
 
 # Directory that will be created to hold the daily run
