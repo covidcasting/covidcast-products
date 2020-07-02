@@ -26,3 +26,4 @@ git commit -m "Summary files for $(basename $(dirname $(pwd)))" \
   { echo "Commiting results failed" >&2; exit 1; }
 
 git push origin draft
+git checkout master

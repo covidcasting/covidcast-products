@@ -8,9 +8,12 @@ source activate covidcast
 set -o nounset # No undefined variables
 set -o errexit # Error ASAP
 
-# Get current with master
+# Get current with 'master' and 'draft' branches
 git checkout master
 git pull origin master
+git checkout draft
+git pull origin draft
+git checkout master
 
 COVIDESTIM_SOURCES='git@github.com:covidestim/covidestim-sources'
 
