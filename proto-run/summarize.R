@@ -15,7 +15,7 @@ library(stringr)
 glue('covidestim SLURM summarizer
 
 Usage:
-  {name} [--id-vars=<vars>] <sjob>
+  {name} <sjob>
   {name} (-h | --help)
   {name} --version
 
@@ -27,10 +27,9 @@ Options:
 
 args <- docopt(doc, version = 'covidestim SLURM summarizer 0.1')
 
-id_vars <- str_split(args$id_vars, ',')[[1]]
 sjob    <- readRDS(args$sjob)
 d       <- get_slurm_out(sjob, outtype = 'table')
 
-result <- select_at(d, c(id_vars, 'summary')) %>% unnest(summary)
+result <- select_at(d, c('group_name', 'summary')) %>% tibble::as_tibble %>% unnest(summary)
 
 readr::write_csv(result, 'summary.csv')
