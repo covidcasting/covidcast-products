@@ -28,8 +28,9 @@ Options:
 args <- docopt(doc, version = 'covidestim SLURM summarizer 0.1')
 
 sjob    <- readRDS(args$sjob)
-d       <- get_slurm_out(sjob, outtype = 'table')
+d       <- tibble::as_tibble(get_slurm_out(sjob, outtype = 'table'))
 
-result <- select_at(d, c('group_name', 'summary')) %>% tibble::as_tibble %>% unnest(summary)
+result <- select_at(d, c('group_name', 'summary')) %>% unnest(summary)
+result <- rename(state = group_name)
 
 readr::write_csv(result, 'summary.csv')
