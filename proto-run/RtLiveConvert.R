@@ -63,8 +63,8 @@ names(d_withtags) <- state_abbrs[names(d_withtags)]
 
 list(
   state_data = d_withtags,
-  last_updated_ts = 1e3*(max(d$date) %>% as.POSIXct %>% as.numeric),
-  last_r0_date = d$date[length(d$date) - 2] %>% format('%Y-%m-%d')
+  last_updated_ts = 1e3*(lubridate::now() %>% as.POSIXct %>% as.numeric),
+  last_r0_date = d$date[length(d$date)] %>% format('%Y-%m-%d')
 ) -> final
 
 cat(
