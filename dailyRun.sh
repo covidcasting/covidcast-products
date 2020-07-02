@@ -63,7 +63,7 @@ echo "Job array submitted; jobid=$jid1"
 cd .. # Now in the base directory for the run, ex. 2020-06-30/
 
 # Submit the summarizing script
-jid2=$(./sbatch -A covid --dependency=afterany:$jid1 --mem-per-cpu=40g --time=30 summarize.sh --id-vars=state sjob.RDS)
+jid2=$(./sbatch -A covid --dependency=afterany:$jid1 --mem-per-cpu=40g --time=30 summarize.sh sjob.RDS)
 
 echo "Summarization script submitted; jobid=$jid2"
 
