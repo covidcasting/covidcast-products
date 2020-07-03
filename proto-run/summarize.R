@@ -31,6 +31,6 @@ sjob    <- readRDS(args$sjob)
 d       <- tibble::as_tibble(get_slurm_out(sjob, outtype = 'table'))
 
 result <- select_at(d, c('group_name', 'summary')) %>% unnest(summary)
-result <- rename(state = group_name)
+result <- rename(result, state = group_name)
 
 readr::write_csv(result, 'summary.csv')
