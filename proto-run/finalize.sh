@@ -4,7 +4,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=2g
 
-module load R miniconda
+module load miniconda
 source activate covidcast
 
 set -o nounset # No undefined variables
