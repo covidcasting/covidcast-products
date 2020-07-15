@@ -2,7 +2,7 @@
 #SBATCH --partition=covid
 #SBATCH --job-name=finalize
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=2g
+#SBATCH --mem-per-cpu=5g
 
 module load miniconda
 source activate covidcast
@@ -27,3 +27,8 @@ git commit -m "Summary files for $(basename $(dirname $(pwd)))" \
 
 git push origin draft
 git checkout master
+
+# Update RDS and SQLite files
+cd ..
+Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS \
+  2020-07-*-allstates-ctp 2020-08-*-allstates-ctp 2020-09-*-allstates-ctp
