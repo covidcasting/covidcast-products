@@ -2,7 +2,7 @@
 
 # Load R, conda, and the `covidcast` conda env so that R packages needed for
 # running the submission script are available in the environment
-module load R miniconda 
+module load miniconda 
 source activate covidcast
 
 set -o nounset # No undefined variables
