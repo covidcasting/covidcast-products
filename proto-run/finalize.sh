@@ -31,4 +31,4 @@ git checkout master
 # Update RDS and SQLite files
 cd ..
 Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS \
-  2020-07-*-allstates-ctp 2020-08-*-allstates-ctp 2020-09-*-allstates-ctp
+  2020-07-*-allstates-ctp
