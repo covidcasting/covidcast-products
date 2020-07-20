@@ -26,9 +26,10 @@ git commit -m "Summary files for $(basename $(dirname $(pwd)))" \
   { echo "Commiting results failed" >&2; exit 1; }
 
 git push origin draft
-git checkout master
 
 # Update RDS and SQLite files
 cd ..
 Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS \
   2020-07-*-allstates-ctp
+
+git checkout master
