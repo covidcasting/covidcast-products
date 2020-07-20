@@ -32,7 +32,7 @@ process_state <- function(df) {
     "r0_h80"         = "Rt.hi",
     "cases_new"      = "input_cases",
     "corr_cases_new" = "cases.fitted",
-    "tests-new"      = "input_volume",
+    "tests_new"      = "input_volume",
     "deaths_new"     = "input_deaths",
     "onsets"         = "infections",
     "corr_cases_raw" = "input_cases"
