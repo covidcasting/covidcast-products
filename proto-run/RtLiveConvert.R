@@ -11,7 +11,7 @@ d_input <- read_csv('data.csv') %>%
 
 d <- left_join(d, d_input, by = c('date', 'state'))
 d <- filter(d, data.available == TRUE)
-d <- filter(d, date < max(date) - lubridate::days(2))
+d <- filter(d, date <= max(date) - lubridate::days(2)) # Exclude last 2 days
 
 # Split each state into its own group, then split each group into its own df
 d_split <- d %>% group_by(state) %>% group_split()
@@ -35,6 +35,8 @@ process_state <- function(df) {
     "tests_new"      = "input_volume",
     "deaths_new"     = "input_deaths",
     "onsets"         = "infections",
+    "onsets_l95"     = "infections.lo",
+    "onsets_h95"     = "infections.hi",
     "corr_cases_raw" = "input_cases"
   ) -> vars_to_keep
 
