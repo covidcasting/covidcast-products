@@ -40,6 +40,9 @@ process_state <- function(df, stateName) {
     "onsetsPC"       = "infections",
     "onsetsPC_l95"   = "infections.lo",
     "onsetsPC_h95"   = "infections.hi",
+    "cumulative"     = "cum.incidence",
+    "cumulative_l95" = "cum.incidence.lo",
+    "cumulative_h95" = "cum.incidence.hi",
     "corr_cases_raw" = "input_cases"
   ) -> vars_to_keep
 
@@ -50,6 +53,12 @@ process_state <- function(df, stateName) {
     df,
     vars(starts_with("onsetsPC")),
     ~100000* . /
+      usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
+  )
+  df <- mutate_at(
+    df,
+    vars(starts_with("cumulative")),
+    ~100 * . /
       usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
   )
 
