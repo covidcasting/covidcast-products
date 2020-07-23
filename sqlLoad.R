@@ -8,6 +8,7 @@ library(tidyr,     warn.conflicts = FALSE)
 library(tibble,    warn.conflicts = FALSE)
 library(purrr,     warn.conflicts = FALSE)
 library(magrittr,  warn.conflicts = FALSE)
+library(stringr)
 
 library(cli)
 library(docopt)
@@ -49,10 +50,12 @@ read_csv <- partial(read_csv, col_types = cols(
 ))
 
 cli_process_start("Loading summary files")
+
 allRuns <- tibble(
-  df = map(paths, read_csv)
-) %>% mutate(max_date = map(df, ~max(.$date)) %>% reduce(c)) %>%
-  unnest(max_date) %>% unnest(df)
+  df = map(paths, read_csv),
+  max_date = str_extract(paths, '[0-9]{4}-[0-9]{2}-[0-9]{2}') %>% as.Date
+) %>% unnest(max_date) %>% unnest(df)
+
 cli_process_done()
 
 cli_process_start("Saving RDS file")
