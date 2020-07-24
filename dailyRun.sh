@@ -77,4 +77,9 @@ echo "Summarization script submitted; jobid=$jid2"
 # Submit the finalizing script
 jid3=$(./sbatch -A covid --dependency=afterok:$jid2 --mem-per-cpu=2g --time=10 finalize.sh)
 
+cd .. # now in covidestim-products
+
+# Submit the animation script
+jid4=$(./sbatch -A covid --dependency=afterok:$jid3 animate.sh)
+
 echo "Finalization script submitted; jobid=$jid3"

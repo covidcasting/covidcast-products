@@ -72,7 +72,7 @@ cli_alert_info("Rendering {.code {args$state}}")
 anim <- base + transition_time(max_date) +
   shadow_trail(color = 'grey30', distance = 1/(length(unique(d$max_date))-1))
 
-animate(anim, fps = 30, duration = 10, width = 12, height = 6, units = 'in',
+video_object <- animate(anim, fps = 30, duration = 10, width = 12, height = 6, units = 'in',
         res = 150, renderer = ffmpeg_renderer())  
 
 cli_alert_success("Finished rendering {.code {args$state}}")
