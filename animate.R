@@ -73,7 +73,10 @@ anim <- base + transition_time(max_date) +
   shadow_trail(color = 'grey30', distance = 1/(length(unique(d$max_date))-1))
 
 video_object <- animate(anim, fps = 30, duration = 10, width = 12, height = 6, units = 'in',
-        res = 150, renderer = ffmpeg_renderer())  
+  res = 150,
+  renderer = ffmpeg_renderer(ffmpeg="/ysm-gpfs/apps/software/FFmpeg/4.1-foss-2018b/bin/ffmpeg",
+                             format="mp4")
+)  
 
 cli_alert_success("Finished rendering {.code {args$state}}")
 cli_alert_info("Saving {.code {args$state}} to {.file {args$o}}")
