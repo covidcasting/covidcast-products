@@ -23,6 +23,9 @@ d_statenames <- map_chr(d_split, ~unique(.$state))
 # Key the list
 d_indexed <- d_split %>% setNames(d_statenames)
 
+# State population
+StatePop <- read_csv("proto-run/nst-est2019-01.csv")
+
 # Remove unneeded information and transpose
 process_state <- function(df, stateName) {
 
@@ -53,14 +56,16 @@ process_state <- function(df, stateName) {
     df,
     vars(starts_with("onsetsPC")),
     ~100000* . /
-      usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
-  )
+      #usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
+      StatePop[[which(StatePop$Location == stateName), 'POP.EST']]
+      )
   df <- mutate_at(
     df,
     vars(starts_with("cumulative")),
     ~100 * . /
-      usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
-  )
+      #usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
+      StatePop[[which(StatePop$Location == stateName), 'POP.EST']]
+      )
 
   transpose(df)
 }
@@ -73,7 +78,8 @@ restructure_state <- function(lst, state_name) {
   list(
     identifier = state_abbrs[state_name],
     series     = lst,
-    population = usmap::statepop[[which(statepop$full == state_name), 'pop_2015']]
+    population = #usmap::statepop[[which(statepop$full == state_name), 'pop_2015']]
+                 StatePop[[which(StatePop$Location == state_name), 'POP.EST']]
   )
 }
 
