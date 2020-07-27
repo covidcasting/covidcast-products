@@ -1,5 +1,5 @@
 library(tidyverse)
-library(usmap)
+#library(usmap)
 library(jsonlite)
 
 d <- read_csv('summary.csv')
