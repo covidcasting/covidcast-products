@@ -83,3 +83,8 @@ echo "Finalization script submitted; jobid=$jid3"
 jid4=$(./sbatch -A covid --dependency=afterok:$jid3 --chdir=.. ../animate.sh)
 
 echo "Animation script submitted; jobid=$jid4"
+
+# Submit the s3 script
+jid4=$(./sbatch -A covid --dependency=afterok:$jid4 --chdir=.. ../s3.sh)
+
+echo "S3 upload script submitted; jobid=$jid4"
