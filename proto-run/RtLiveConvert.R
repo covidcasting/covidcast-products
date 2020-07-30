@@ -11,7 +11,7 @@ d_input <- read_csv('data.csv') %>%
 
 d <- left_join(d, d_input, by = c('date', 'state'))
 d <- filter(d, data.available == TRUE)
-d <- filter(d, date < max(date) - lubridate::days(2))
+d <- filter(d, date <= max(date) - lubridate::days(2)) # Exclude last 2 days
 
 # Split each state into its own group, then split each group into its own df
 d_split <- d %>% group_by(state) %>% group_split()
@@ -24,7 +24,7 @@ d_statenames <- map_chr(d_split, ~unique(.$state))
 d_indexed <- d_split %>% setNames(d_statenames)
 
 # Remove unneeded information and transpose
-process_state <- function(df) {
+process_state <- function(df, stateName) {
 
   c("date"           = "date",
     "r0"             = "Rt",
@@ -35,12 +35,32 @@ process_state <- function(df) {
     "tests_new"      = "input_volume",
     "deaths_new"     = "input_deaths",
     "onsets"         = "infections",
+    "onsets_l95"     = "infections.lo",
+    "onsets_h95"     = "infections.hi",
+    "onsetsPC"       = "infections",
+    "onsetsPC_l95"   = "infections.lo",
+    "onsetsPC_h95"   = "infections.hi",
+    "cumulative"     = "cum.incidence",
+    "cumulative_l95" = "cum.incidence.lo",
+    "cumulative_h95" = "cum.incidence.hi",
     "corr_cases_raw" = "input_cases"
   ) -> vars_to_keep
 
   df <- select_at(df, vars_to_keep)
   df <- setNames(df, names(vars_to_keep))
   df <- mutate(df, date = format(date, '%Y-%m-%d'))
+  df <- mutate_at(
+    df,
+    vars(starts_with("onsetsPC")),
+    ~100000* . /
+      usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
+  )
+  df <- mutate_at(
+    df,
+    vars(starts_with("cumulative")),
+    ~100 * . /
+      usmap::statepop[[which(statepop$full == stateName), 'pop_2015']] # The state population
+  )
 
   transpose(df)
 }
@@ -57,7 +77,7 @@ restructure_state <- function(lst, state_name) {
   )
 }
 
-d_transposed      <- map(d_indexed, process_state)
+d_transposed      <- imap(d_indexed, process_state)
 d_withtags        <- imap(d_transposed, restructure_state)  
 names(d_withtags) <- state_abbrs[names(d_withtags)]
 

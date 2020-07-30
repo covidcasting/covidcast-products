@@ -19,13 +19,14 @@ Usage:
 Options:
   --state=<state>    Which state to animate. Use state abbreviation, i.e. DC
   -o <output_path>   Where to save the animation
-  <summary_path>     The path to the summary .RDS Must include max_date column
+  <summary_path>     The path to the summary .RDS. Must include max_date column
   -h --help          Show this screen.
   --version          Show version.
 ', name = "animate.R") -> doc
 
 args <- docopt(doc, version = '0.1')
 
+# Include DC in the state.* objects, which aren't included by default
 state.name <- c(state.name, "District of Columbia")
 state.abb  <- c(state.abb, "DC")
 
@@ -66,11 +67,16 @@ base <- ggplot(d, aes(date, Rt)) +
 
 cli_alert_info("Rendering {.code {args$state}}")
 
+# 'distance' is set so that every "trail" produced corresponds to a particular
+# day's data, instead of a tweened frame in-between dates
 anim <- base + transition_time(max_date) +
   shadow_trail(color = 'grey30', distance = 1/(length(unique(d$max_date))-1))
 
-animate(anim, fps = 30, duration = 10, width = 12, height = 6, units = 'in',
-        res = 150, renderer = ffmpeg_renderer())  
+video_object <- animate(anim, fps = 30, duration = 10, width = 12, height = 6, units = 'in',
+  res = 150,
+  renderer = ffmpeg_renderer(ffmpeg="/ysm-gpfs/apps/software/FFmpeg/4.1-foss-2018b/bin/ffmpeg",
+                             format="mp4")
+)  
 
 cli_alert_success("Finished rendering {.code {args$state}}")
 cli_alert_info("Saving {.code {args$state}} to {.file {args$o}}")

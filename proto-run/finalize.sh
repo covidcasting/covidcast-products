@@ -15,20 +15,22 @@ Rscript RtLiveConvert.R # Convert summary.csv to summary.json
 # json2msgpack needs to be in $PATH. It can be easily installed from GitHub
 json2msgpack -bli summary.json -o summary.pack
 
-# copy the .pack file to the root directory, so that after merging into master
-# it will be the new .pack file that the website looks to for data
+# copy the .pack and the .csv file to the root directory, so that after merging into master
+# it will be the new .pack/.csv files that the website looks to for data
 cp summary.pack ../current_summary.pack
+cp summary.csv ../current_summary.csv
 
 git checkout draft || { echo "Checking out the 'draft' branch failed" >&2; exit 1; }
-git add data.csv summary.csv summary.pack ../current_summary.pack
+git add data.csv summary.csv summary.pack ../current_summary.pack ../current_summary.csv
 git commit -m "Summary files for $(basename $(dirname $(pwd)))" \
            --author "CovidEstimBot <marcusrussi+covidestim@gmail.com>" || \
   { echo "Commiting results failed" >&2; exit 1; }
 
 git push origin draft
-git checkout master
 
 # Update RDS and SQLite files
 cd ..
-Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS \
-  2020-07-*-allstates-ctp 2020-08-*-allstates-ctp 2020-09-*-allstates-ctp
+find . -name "2020-07-**-allstates-ctp" -or -name "2020-08-**-allstates-ctp" | \
+  xargs Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS
+
+git checkout master
