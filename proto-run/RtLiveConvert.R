@@ -7,7 +7,7 @@ d_input <- read_csv('data.csv') %>%
   transmute(date, state,
             input_cases = cases,
             input_deaths = deaths,
-            input_volume = round(input_cases / fracpos))
+            input_volume = volume)
 
 d <- left_join(d, d_input, by = c('date', 'state'))
 d <- filter(d, data.available == TRUE)
