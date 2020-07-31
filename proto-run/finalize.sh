@@ -30,7 +30,10 @@ git push origin draft
 
 # Update RDS and SQLite files
 cd ..
-find . -name "2020-07-**-allstates-ctp" -or -name "2020-08-**-allstates-ctp" | \
+find . \ 
+  -maxdepth 1 \
+  -regex '.*2020-0[789]-[0-9][0-9]-allstates-ctp.*' \
+  -type d |
   xargs Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS
 
 git checkout master
