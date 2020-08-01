@@ -51,7 +51,7 @@ x_scale <- scale_x_date(
 
 base <- ggplot(d, aes(date, Rt)) +
   geom_hline(yintercept = 1.0, color = 'red') +
-  geom_ribbon(aes(ymin = Rt.lo, ymax = Rt.hi), alpha = 0.05, na.rm = TRUE) +
+  geom_ribbon(aes(ymin = Rt.lo, ymax = Rt.hi), alpha = 0.025, na.rm = TRUE) +
   geom_line(color = 'steelblue3', size = 1.5, na.rm = TRUE) + 
   geom_line(aes(y = Rt.hi), color = 'grey30', size = 0.5, alpha = 0.2, na.rm = TRUE) +
   geom_line(aes(y = Rt.lo), color = 'grey30', size = 0.5, alpha = 0.2, na.rm = TRUE) +
@@ -72,7 +72,7 @@ cli_alert_info("Rendering {.code {args$state}}")
 anim <- base + transition_time(max_date) +
   shadow_trail(color = 'grey30', distance = 1/(length(unique(d$max_date))-1))
 
-video_object <- animate(anim, fps = 30, duration = 10, width = 12, height = 6, units = 'in',
+video_object <- animate(anim, fps = 30, duration = 16, width = 12, height = 6, units = 'in',
   res = 150,
   renderer = ffmpeg_renderer(ffmpeg="/ysm-gpfs/apps/software/FFmpeg/4.1-foss-2018b/bin/ffmpeg",
                              format="mp4")
