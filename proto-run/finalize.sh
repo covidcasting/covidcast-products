@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH --partition=covid
+#SBATCH --account=covid
 #SBATCH --job-name=finalize
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=5g
