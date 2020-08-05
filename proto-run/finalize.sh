@@ -33,7 +33,7 @@ cd ..
 find . \ 
   -maxdepth 1 \
   -regex '.*2020-0[789]-[0-9][0-9]-allstates-ctp.*' \
-  -type d |
+  -type d | \
   xargs Rscript sqlLoad.R --file=summary.csv --sqlite=dailyRuns.db --rds=dailyRuns.RDS
 
 git checkout master
