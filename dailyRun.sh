@@ -56,7 +56,7 @@ Rscript rslurm.R \
   --id-vars=state \
   --partition=covid \
   --summarize \
-  --time=280 \
+  --time=300 \
   --name=ctp_daily \
   data.csv || \
   { echo "Preparing rslurm setup failed" >&2; exit 1; }
